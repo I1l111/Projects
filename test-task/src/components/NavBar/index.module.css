@@ -36,6 +36,7 @@
 
 .SubmenuContainer {
   position: absolute;
+  visibility: hidden;
+  opacity: 0;
   top: 1.3rem;
-  pointer-events: none;
 }
