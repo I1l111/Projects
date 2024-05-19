@@ -109,9 +109,10 @@ const MOCK_DATA = [
 function Posts() {
   return (
     <div className={styles.PostsFlexContainer}>
-      {MOCK_DATA.map((post) => {
+      {MOCK_DATA.map((post, index) => {
         return (
           <Post
+            key={index}
             autor={post.autor}
             title={post.title}
             tag={post.tags}

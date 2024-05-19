@@ -1,11 +1,11 @@
 .PostsFlexContainer {
-  width: 100%;
+  width: 95%;
   max-width: 72.5rem;
   margin: 3rem auto;
 
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: space-around;
   row-gap: 3rem;
   column-gap: 2rem;
 }

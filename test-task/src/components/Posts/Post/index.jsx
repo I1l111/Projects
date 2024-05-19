@@ -7,7 +7,7 @@ function Post({ autor, title, tag, text, date, views, img, img2x }) {
     <div className={styles.PostFlexItem}>
       <div className={styles.ImageContainer}>
         <picture width="100%">
-          <source width="100%" srcset={img2x} type="image/jpg" />
+          <source width="100%" srcSet={img2x} type="image/jpg" />
           <img width="100%" src={img} type="image/jpg" alt="posts image" />
         </picture>
       </div>
