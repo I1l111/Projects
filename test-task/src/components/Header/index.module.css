@@ -10,7 +10,12 @@
 
 .LogoContainer {
   width: 11.3125rem;
-  margin: 0 calc((100% - 12.3125rem) / 2);
+}
+
+.Search {
+  display: flex;
+  justify-content: flex-end;
+  width: calc((100% - 11.3125rem) / 2);
 }
 
 .SearchButton {
