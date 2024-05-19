@@ -1,0 +1,41 @@
+.NavBar {
+  display: flex;
+  justify-content: space-evenly;
+  width: 35rem;
+  margin: 1.3125rem auto 0;
+}
+
+.NavigationItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 1rem;
+  padding-bottom: 1.325rem;
+  cursor: pointer;
+  position: relative;
+}
+
+.NavigationItem:hover .SubmenuContainer {
+  visibility: visible;
+  opacity: 1;
+}
+
+.Text {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1rem;
+}
+
+.ArrowContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1rem;
+  height: 0.25rem;
+}
+
+.SubmenuContainer {
+  position: absolute;
+  top: 1.3rem;
+  pointer-events: none;
+}

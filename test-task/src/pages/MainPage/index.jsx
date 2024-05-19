@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
 import Header from "../../components/Header";
+import NavBar from "../../components/NavBar";
 import Posts from "../../components/Posts";
 
 import styles from "./index.module.css";
@@ -25,10 +26,9 @@ function MainPage() {
   return (
     <div>
       <Header />
-      <div
-        style={{ top: `${navbarTop}px` }}
-        className={styles.NavBarContainer}
-      ></div>
+      <div style={{ top: `${navbarTop}px` }} className={styles.NavBarContainer}>
+        <NavBar />
+      </div>
 
       <Posts />
     </div>
