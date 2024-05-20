@@ -9,7 +9,7 @@ export function useFetch(url) {
     const controller = new AbortController();
     const signal = controller.signal;
 
-    const fetchData = async () => {
+    async function fetchData() {
       try {
         setLoading(true);
 

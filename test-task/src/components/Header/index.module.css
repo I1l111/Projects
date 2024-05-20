@@ -11,3 +11,13 @@
 .LogoContainer {
   width: 11.3125rem;
 }
+
+.NavBarContainer {
+  width: 100%;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--main-background-color);
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+}

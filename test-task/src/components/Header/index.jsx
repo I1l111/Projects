@@ -1,40 +1,34 @@
-import { useState } from "react";
-
 import { LogoSVG } from "../../assets/svgs/Logo";
 
 import Search from "../Search";
+import Menu from "../../components/Menu";
+
+import { useScrollPosition } from "../../hooks/useScrollPosition";
 
 import styles from "./index.module.css";
 
+const STICKY_HEADER_HEIGHT_THRESHOLD = 200;
+
 function Header({ searchValue, setSearchValue }) {
-  const [showSearchInput, setShowSearchInput] = useState(false);
+  const { scrollPosition } = useScrollPosition();
 
-  function handleSearchIconClick() {
-    setShowSearchInput(true);
-  }
-
-  function handleInputBlur() {
-    setShowSearchInput(false);
-  }
-
-  function handleSearchInputChange(event) {
-    const { value } = event.target;
-    setSearchValue(value);
-  }
+  const navbarTop =
+    scrollPosition > STICKY_HEADER_HEIGHT_THRESHOLD
+      ? STICKY_HEADER_HEIGHT_THRESHOLD - scrollPosition
+      : 0;
 
   return (
-    <div className={styles.LogoAndSearch}>
-      <div className={styles.LogoContainer}>
-        <LogoSVG />
+    <>
+      <div className={styles.LogoAndSearch}>
+        <div className={styles.LogoContainer}>
+          <LogoSVG />
+        </div>
+        <Search searchValue={searchValue} setSearchValue={setSearchValue} />
       </div>
-      <Search
-        searchValue={searchValue}
-        showInput={showSearchInput}
-        onChangeHandler={handleSearchInputChange}
-        onBlurHandler={handleInputBlur}
-        onIconClickHandler={handleSearchIconClick}
-      />
-    </div>
+      <div style={{ top: `${navbarTop}px` }} className={styles.NavBarContainer}>
+        <Menu />
+      </div>
+    </>
   );
 }
 

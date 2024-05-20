@@ -1,18 +1,29 @@
-import { SearchSVG } from "../../assets/svgs/search";
+import { useState } from "react";
+
+import { SearchSVG } from "../../assets/svgs/Search";
 
 import styles from "./index.module.css";
 
-function Search({
-  searchValue,
-  showInput,
-  onChangeHandler,
-  onBlurHandler,
-  onIconClickHandler,
-}) {
+function Search({ searchValue, setSearchValue }) {
+  const [showInput, setShowInput] = useState(false);
+
+  function handleInputChange(event) {
+    const { value } = event.target;
+    setSearchValue(value);
+  }
+
+  function handleSearchIconClick() {
+    setShowInput(true);
+  }
+
+  function handleInputBlur() {
+    setShowInput(false);
+  }
+
   return (
     <div className={styles.Search}>
       {!showInput && (
-        <div onClick={onIconClickHandler} className={styles.SearchButton}>
+        <div onClick={handleSearchIconClick} className={styles.SearchButton}>
           <SearchSVG />
         </div>
       )}
@@ -21,8 +32,8 @@ function Search({
           name="search"
           value={searchValue}
           autoFocus
-          onChange={onChangeHandler}
-          onBlur={onBlurHandler}
+          onChange={handleInputChange}
+          onBlur={handleInputBlur}
         />
       )}
     </div>

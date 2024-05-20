@@ -3,7 +3,7 @@ import Post from "./Post";
 
 import styles from "./index.module.css";
 
-function Posts({ posts, onPostClick }) {
+function Posts({ posts, onClick }) {
   if (!posts || posts.length === 0) {
     return <NoResult />;
   }
@@ -14,20 +14,10 @@ function Posts({ posts, onPostClick }) {
         return (
           <div
             key={index}
-            onClick={() => onPostClick(post)}
+            onClick={() => onClick(post)}
             className={styles.FlexItem}
           >
-            <Post
-              showImage
-              autor={post.autor}
-              title={post.title}
-              tag={post.tags}
-              text={post.text}
-              date={post.date}
-              views={post.views}
-              img={post.img}
-              img2x={post.img_2x}
-            />
+            <Post post={post} />
           </div>
         );
       })}
