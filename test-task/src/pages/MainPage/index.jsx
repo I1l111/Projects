@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import Header from "../../components/Header";
-import NavBar from "../../components/NavBar";
+import Menu from "../../components/Menu";
 import Posts from "../../components/Posts";
 import ModalWithBackdrop from "../../components/ModalWithBackdrop";
 
@@ -76,7 +76,7 @@ function MainPage() {
           style={{ top: `${navbarTop}px` }}
           className={styles.NavBarContainer}
         >
-          <NavBar />
+          <Menu />
         </div>
 
         {loading && <p>Loading...</p>}

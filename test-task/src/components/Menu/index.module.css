@@ -1,11 +1,11 @@
-.NavBar {
+.MenuContainer {
   display: flex;
   justify-content: space-evenly;
   width: 35rem;
   margin: 1.3125rem auto 0;
 }
 
-.NavigationItem {
+.MenuItem {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -15,7 +15,22 @@
   position: relative;
 }
 
-.NavigationItem:hover .SubmenuContainer {
+.MenuItem::after {
+  content: "";
+  position: absolute;
+  bottom: 0.5rem;
+  left: 0;
+  height: 0.1rem;
+  width: 0;
+  background-color: var(--menu-highlight-color);
+  transition: width 0.2s;
+}
+
+.MenuItem:hover:after {
+  width: 100%;
+}
+
+.MenuItem:hover .SubmenuContainer {
   position: absolute;
   display: block;
   top: 1.3rem;

@@ -1,26 +1,8 @@
 import { ArrowSVG } from "../../assets/svgs/Arrow";
 
-import styles from "./index.module.css";
+import { SUBMENU_ITEMS } from "../../data/menuItems";
 
-const SUBMENU_ITEMS = [
-  { id: 1, name: "Post Header" },
-  {
-    id: 2,
-    name: "Post Layout",
-  },
-  {
-    id: 3,
-    name: "Share Buttons",
-  },
-  {
-    id: 4,
-    name: "Gallery Post",
-  },
-  {
-    id: 5,
-    name: "Video Post",
-  },
-];
+import styles from "./index.module.css";
 
 function Submenu() {
   return (
