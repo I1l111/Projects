@@ -25,7 +25,7 @@
   }
 }
 
-@media (max-width: 32rem) {
+@media (max-width: 48rem) {
   .PostsFlexContainer {
     padding: 0 1rem;
   }

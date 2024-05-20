@@ -1,7 +1,7 @@
 import { LogoSVG } from "../../assets/svgs/Logo";
 
 import Search from "../Search";
-import Menu from "../../components/Menu";
+import Menu from "../Menu";
 
 import { useScrollPosition } from "../../hooks/useScrollPosition";
 
@@ -25,7 +25,7 @@ function Header({ searchValue, setSearchValue }) {
         </div>
         <Search searchValue={searchValue} setSearchValue={setSearchValue} />
       </div>
-      <div style={{ top: `${navbarTop}px` }} className={styles.NavBarContainer}>
+      <div style={{ top: `${navbarTop}px` }} className={styles.MenuContainer}>
         <Menu />
       </div>
     </>

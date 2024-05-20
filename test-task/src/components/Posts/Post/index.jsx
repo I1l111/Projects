@@ -21,7 +21,7 @@ function Post({ post, alignHorizontally }) {
         <div className={styles.GeneralInfoContainer}>
           <span className={styles.Autor}>{post.autor}</span>
           <span className={styles.AdditionalInfo}>{post.date}</span>
-          <span className={styles.AdditionalInfo}>{post.views}</span>
+          <span className={styles.AdditionalInfo}>{post.views} Views</span>
         </div>
       </div>
       <div>

@@ -1,14 +1,19 @@
-import { useState } from "react";
+import { useState, lazy, Suspense } from "react";
 
-import Header from "../../components/Header";
 import Posts from "../../components/Posts";
 import Post from "../../components/Posts/Post";
 import Loader from "../../components/Loader";
 import Modal from "../../components/Modal";
 import Error from "../../components/Error";
 
+const HeaderLazy = lazy(() => import("../../components/Header/index.desktop"));
+const HeaderMobileLazy = lazy(() =>
+  import("../../components/Header/index.mobile")
+);
+
 import { useFetch } from "../../hooks/useFetch";
 import { useDebounce } from "../../hooks/useDebounce";
+import { useScreenSize } from "../../hooks/useScreenSize";
 
 import { getFilteredPosts } from "../../helpers/getFilteredPosts";
 
@@ -29,6 +34,14 @@ function MainPage() {
     posts,
   });
 
+  const [verticalMenuVisibility, setVerticalMenuVisinbility] = useState(false);
+
+  const { mobileSize, tabletSize, desktopSize } = useScreenSize();
+
+  function handleMenuToggle() {
+    setVerticalMenuVisinbility((prevState) => !prevState);
+  }
+
   function handlePostClick(post) {
     setSelectedPost(post);
     setShowModal(true);
@@ -38,7 +51,8 @@ function MainPage() {
     setShowModal(false);
   }
 
-  const pageContainerClasses = showModal ? styles.HideScrollbar : styles.Layout;
+  const pageContainerClasses =
+    showModal || verticalMenuVisibility ? styles.HideScrollbar : styles.Layout;
 
   const showPosts = !error && !loading;
 
@@ -51,7 +65,22 @@ function MainPage() {
       )}
 
       <div className={pageContainerClasses}>
-        <Header searchValue={searchValue} setSearchValue={setSearchValue} />
+        <Suspense fallback="">
+          {desktopSize && (
+            <HeaderLazy
+              searchValue={searchValue}
+              setSearchValue={setSearchValue}
+            />
+          )}
+          {(mobileSize || tabletSize) && (
+            <HeaderMobileLazy
+              onMenuToggle={handleMenuToggle}
+              open={verticalMenuVisibility}
+              searchValue={searchValue}
+              setSearchValue={setSearchValue}
+            />
+          )}
+        </Suspense>
 
         {loading && <Loader />}
 

@@ -12,7 +12,22 @@
   width: 11.3125rem;
 }
 
-.NavBarContainer {
+.MobileHeader {
+  position: relative;
+  width: 95%;
+  padding: 1.5rem 1rem;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.MobileHeader > * {
+  width: calc(100% / 3);
+  height: 1.5rem;
+}
+
+.MenuContainer {
   width: 100%;
   border-top: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
@@ -20,4 +35,119 @@
   position: sticky;
   position: -webkit-sticky;
   top: 0;
+}
+
+.MenuIconContainer {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  z-index: 15;
+  transition: left 0.2s;
+}
+
+.MoveRight.MenuIconContainer {
+  left: 65%;
+}
+
+.VerticalMenuContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 0;
+  overflow: hidden;
+  transition: width 0.2s;
+  height: 100vh;
+  background-color: var(--main-background-color);
+}
+
+.OpenMenu.VerticalMenuContainer {
+  width: 80%;
+}
+
+.Backdrop {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  background-color: var(--main-background-color);
+  opacity: 0.5;
+}
+
+.HamburgerIcon {
+  width: 2rem;
+  height: 1rem;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: 0.5s ease-in-out;
+  -moz-transition: 0.5s ease-in-out;
+  -o-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+  cursor: pointer;
+}
+
+.HamburgerIcon span {
+  display: block;
+  position: absolute;
+  height: 0.25rem;
+  width: 100%;
+  background: #d3531a;
+  border-radius: 0.25rem;
+  opacity: 1;
+  left: 0;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: 0.25s ease-in-out;
+  -moz-transition: 0.25s ease-in-out;
+  -o-transition: 0.25s ease-in-out;
+  transition: 0.25s ease-in-out;
+}
+
+.HamburgerIcon span {
+  background-color: black;
+}
+
+.HamburgerIcon span:nth-child(1) {
+  top: 0px;
+}
+
+.HamburgerIcon span:nth-child(2),
+.HamburgerIcon span:nth-child(3) {
+  top: 0.5rem;
+}
+
+.HamburgerIcon span:nth-child(4) {
+  top: 1rem;
+}
+
+.HamburgerIcon.Open span:nth-child(1) {
+  top: 0.5rem;
+  width: 0%;
+  left: 50%;
+}
+
+.HamburgerIcon.Open span:nth-child(2) {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.HamburgerIcon.Open span:nth-child(3) {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.HamburgerIcon.Open span:nth-child(4) {
+  top: 0.5rem;
+  width: 0%;
+  left: 50%;
 }
