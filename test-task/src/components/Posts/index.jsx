@@ -7,17 +7,19 @@ function Posts({ posts }) {
     <div className={styles.PostsFlexContainer}>
       {posts.map((post, index) => {
         return (
-          <Post
-            key={index}
-            autor={post.autor}
-            title={post.title}
-            tag={post.tags}
-            text={post.text}
-            date={post.date}
-            views={post.views}
-            img={post.img}
-            img2x={post.img_2x}
-          />
+          <div className={styles.FlexItem}>
+            <Post
+              key={index}
+              autor={post.autor}
+              title={post.title}
+              tag={post.tags}
+              text={post.text}
+              date={post.date}
+              views={post.views}
+              img={post.img}
+              img2x={post.img_2x}
+            />
+          </div>
         );
       })}
     </div>

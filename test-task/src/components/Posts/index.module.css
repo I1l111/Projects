@@ -5,13 +5,31 @@
 
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: flex-start;
   row-gap: 3rem;
   column-gap: 2rem;
+}
+
+.FlexItem {
+  width: calc((100% - 4rem) / 3);
+}
+
+@media (max-width: 64rem) {
+  .PostsFlexContainer {
+    padding: 0 1rem;
+  }
+
+  .FlexItem {
+    width: calc((100% - 2rem) / 2);
+  }
 }
 
 @media (max-width: 30rem) {
   .PostsFlexContainer {
     padding: 0 1rem;
+  }
+
+  .FlexItem {
+    width: 100%;
   }
 }

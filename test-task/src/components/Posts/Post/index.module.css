@@ -1,6 +1,5 @@
 .PostFlexItem {
-  width: 22.5rem;
-  /* min-height: 27rem; maybe not needed */
+  width: 100%;
 }
 
 .ImageContainer {
