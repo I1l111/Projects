@@ -4,9 +4,8 @@ import styles from "./index.module.css";
 import { Logo } from "../../assets/svgs/Logo";
 import { Search } from "../../assets/svgs/search";
 
-function Header() {
+function Header({ searchValue, setSearchValue }) {
   const [showSearchInput, setShowSearchInput] = useState(false);
-  const [searchValue, setSearchValue] = useState("");
 
   function handleSearchIconClick() {
     setShowSearchInput(true);

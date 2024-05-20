@@ -1,36 +1,50 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import Header from "../../components/Header";
 import NavBar from "../../components/NavBar";
 import Posts from "../../components/Posts";
 
+import { useScrollPosition } from "../../hooks/useScrollPosition";
+import { useFetch } from "../../hooks/useFetch";
+// import { useQuery } from '../../hooks/useQuery';
+
 import styles from "./index.module.css";
+import { useDebounce } from "../../hooks/useDebounce";
+
+const STICKY_HEADER_HEIGHT_THRESHOLD = 200;
+const POSTS_API_URL = "https://cloud.codesupply.co/endpoint/react/data.json";
 
 function MainPage() {
-  const [scrollPosition, setScrollPosition] = useState(0);
-  const handleScroll = () => {
-    const position = document.documentElement.scrollTop;
-    setScrollPosition(position);
-  };
+  const { scrollPosition } = useScrollPosition();
+  const [ searchValue, setSearchValue ] = useState('');
+  const debouncedSearchValue = useDebounce(searchValue, 500);
 
-  useEffect(() => {
-    document.addEventListener("scroll", handleScroll, { passive: true });
+  const { data: posts, loading, error } = useFetch(POSTS_API_URL);
+  const filteredPosts = posts.filter(post => post.title.toLowerCase().includes(debouncedSearchValue.toLowerCase()));
 
-    return () => {
-      document.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  /* useQuery
+  const { data: posts, loading, error } = useQuery(
+    ({ signal }) => fetch(POSTS_API_URL, { signal }).then(res => res.json()),
+  );
+  */
 
-  const navbarTop = scrollPosition > 200 ? 200 - scrollPosition : 0;
+  if (error) {
+    return <p>Error {error.message}</p>
+  }
+
+  const navbarTop = scrollPosition > STICKY_HEADER_HEIGHT_THRESHOLD
+    ? STICKY_HEADER_HEIGHT_THRESHOLD - scrollPosition
+    : 0;
 
   return (
     <div>
-      <Header />
+      <Header searchValue={searchValue} setSearchValue={setSearchValue} />
       <div style={{ top: `${navbarTop}px` }} className={styles.NavBarContainer}>
         <NavBar />
       </div>
-
-      <Posts />
+      
+      {loading && <p>Loading...</p>}
+      <Posts posts={filteredPosts} />
     </div>
   );
 }
