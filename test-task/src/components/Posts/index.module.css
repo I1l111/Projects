@@ -6,13 +6,13 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  row-gap: 3rem;
-  column-gap: 2rem;
+  row-gap: 48px;
+  column-gap: 40px;
 }
 
 .FlexItem {
   cursor: pointer;
-  width: calc((100% - 4rem) / 3);
+  width: calc((100% - 96px) / 3);
 }
 
 @media (max-width: 64rem) {
@@ -21,11 +21,11 @@
   }
 
   .FlexItem {
-    width: calc((100% - 2rem) / 2);
+    width: calc((100% - 48px) / 2);
   }
 }
 
-@media (max-width: 30rem) {
+@media (max-width: 32rem) {
   .PostsFlexContainer {
     padding: 0 1rem;
   }

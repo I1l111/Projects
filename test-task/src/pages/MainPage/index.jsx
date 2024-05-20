@@ -5,9 +5,12 @@ import Posts from "../../components/Posts";
 import Post from "../../components/Posts/Post";
 import Loader from "../../components/Loader";
 import Modal from "../../components/Modal";
+import Error from "../../components/Error";
 
 import { useFetch } from "../../hooks/useFetch";
 import { useDebounce } from "../../hooks/useDebounce";
+
+import { getFilteredPosts } from "../../helpers/getFilteredPosts";
 
 import styles from "./index.module.css";
 
@@ -21,9 +24,10 @@ function MainPage() {
   const [showModal, setShowModal] = useState(false);
 
   const { data: posts, loading, error } = useFetch(POSTS_API_URL);
-  const filteredPosts = posts.filter((post) =>
-    post.title.toLowerCase().includes(debouncedSearchValue.toLowerCase())
-  );
+  const filteredPosts = getFilteredPosts({
+    searchValue: debouncedSearchValue,
+    posts,
+  });
 
   function handlePostClick(post) {
     setSelectedPost(post);
@@ -42,7 +46,7 @@ function MainPage() {
     <>
       {showModal && (
         <Modal onClose={handleModalClose}>
-          <Post post={selectedPost} />
+          <Post post={selectedPost} alignHorizontally />
         </Modal>
       )}
 
@@ -51,7 +55,7 @@ function MainPage() {
 
         {loading && <Loader />}
 
-        {/* {error && <Error error={error.message} />} */}
+        {error && <Error errorMessage={error.message} />}
 
         {showPosts && <Posts posts={filteredPosts} onClick={handlePostClick} />}
       </div>

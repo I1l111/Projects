@@ -17,7 +17,9 @@ function Search({ searchValue, setSearchValue }) {
   }
 
   function handleInputBlur() {
-    setShowInput(false);
+    if (!searchValue) {
+      setShowInput(false);
+    }
   }
 
   return (

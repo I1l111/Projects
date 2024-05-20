@@ -1,0 +1,17 @@
+.Error {
+  width: 10rem;
+  position: relative;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%);
+  color: var(--tag-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.IconWrapper {
+  width: 3rem;
+  height: 3rem;
+}

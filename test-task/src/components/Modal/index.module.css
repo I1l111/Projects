@@ -36,10 +36,9 @@
 
 .ModalHeader {
   width: 100%;
-  padding: 1rem;
+  padding: 1.5rem 1.5rem 0;
   display: flex;
   justify-content: flex-end;
-  border-bottom: 1px solid var(--border-color);
 }
 
 .ModalBody {

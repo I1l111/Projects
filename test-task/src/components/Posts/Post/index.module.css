@@ -2,6 +2,18 @@
   width: 100%;
 }
 
+.FlexContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.FlexContainer .ImageContainer,
+.FlexContainer .TitleAndGeneralInfo {
+  width: calc((100% - 1rem) / 2);
+}
+
 .ImageContainer {
   width: 100%;
   object-fit: contain;
