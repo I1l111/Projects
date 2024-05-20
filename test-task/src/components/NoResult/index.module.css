@@ -1,0 +1,10 @@
+.NoResult {
+  width: 4rem;
+  height: 4rem;
+  position: relative;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%);
+  color: var(--secondary-text-color);
+  text-align: center;
+}

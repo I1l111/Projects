@@ -8,6 +8,10 @@
   top: 0;
 }
 
+.Layout {
+  height: 100vh;
+}
+
 .HideScrollbar {
   width: 100vw;
   height: 100vh;

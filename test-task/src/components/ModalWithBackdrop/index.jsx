@@ -4,7 +4,7 @@ import Post from "../Posts/Post";
 
 import styles from "./index.module.css";
 
-function ModalWithBackdrop({ post, onModalClose }) {
+function ModalWithBackdrop({ onModalClose, children }) {
   return (
     <div className={styles.RelativeContainer}>
       <div className={styles.Container}>
@@ -15,18 +15,7 @@ function ModalWithBackdrop({ post, onModalClose }) {
               <CloseSVG />
             </div>
           </div>
-          <div className={styles.ModalBody}>
-            <Post
-              autor={post.autor}
-              title={post.title}
-              tag={post.tags}
-              text={post.text + post.text}
-              date={post.date}
-              views={post.views}
-              img={post.img}
-              img2x={post.img_2x}
-            />
-          </div>
+          <div className={styles.ModalBody}>{children}</div>
         </div>
       </div>
     </div>
