@@ -3,9 +3,9 @@ import styles from "./index.module.css";
 function Post({ post, alignHorizontally }) {
   const srcSet = `${post.img} 360w, ${post.img_2x} 720w`;
 
-  const postClasses = alignHorizontally ? styles.FlexContainer : styles.Post;
+  const containerClass = alignHorizontally ? styles.FlexContainer : styles.Post;
   return (
-    <div className={postClasses}>
+    <div className={containerClass}>
       <div className={styles.ImageContainer}>
         <img
           width="100%"

@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import { LogoSVG } from "../../assets/svgs/Logo";
 
 import Search from "../Search";

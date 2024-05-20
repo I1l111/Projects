@@ -4,7 +4,7 @@ const MOBILE_MAX_WIDTH = 768;
 const TABLET_MAX_WIDTH = 1024;
 
 export function useScreenSize() {
-  const [width, setWidth] = useState(null);
+  const [width, setWidth] = useState(window.innerWidth);
 
   function updateSize() {
     const currentWidth = window.innerWidth;
@@ -13,21 +13,14 @@ export function useScreenSize() {
 
   useEffect(() => {
     window.addEventListener("resize", updateSize);
-    updateSize();
     return () => {
       window.removeEventListener("resize", updateSize);
     };
   }, []);
 
-  let mobileSize = false;
-  let tabletSize = false;
-  let desktopSize = false;
-
-  if (width) {
-    mobileSize = width <= MOBILE_MAX_WIDTH;
-    tabletSize = width > MOBILE_MAX_WIDTH && width <= TABLET_MAX_WIDTH;
-    desktopSize = width > TABLET_MAX_WIDTH;
-  }
+  const mobileSize = width <= MOBILE_MAX_WIDTH;
+  const tabletSize = width > MOBILE_MAX_WIDTH && width <= TABLET_MAX_WIDTH;
+  const desktopSize = width > TABLET_MAX_WIDTH;
 
   return {
     mobileSize,
