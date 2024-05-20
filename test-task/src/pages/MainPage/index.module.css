@@ -7,3 +7,10 @@
   position: -webkit-sticky;
   top: 0;
 }
+
+.HideScrollbar {
+  width: 100vw;
+  height: 100vh;
+  padding-right: 1rem;
+  overflow: hidden;
+}

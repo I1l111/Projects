@@ -1,4 +1,4 @@
-import { Arrow } from "../../assets/svgs/Arrow";
+import { ArrowSVG } from "../../assets/svgs/Arrow";
 
 import Submenu from "../Submenu";
 
@@ -47,7 +47,7 @@ function NavBar() {
             {item.showArrow && (
               <>
                 <div className={styles.ArrowContainer}>
-                  <Arrow />
+                  <ArrowSVG />
                 </div>
                 <div className={styles.SubmenuContainer}>
                   <Submenu />

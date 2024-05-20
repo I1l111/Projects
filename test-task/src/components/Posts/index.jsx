@@ -2,14 +2,18 @@ import Post from "./Post";
 
 import styles from "./index.module.css";
 
-function Posts({ posts }) {
+function Posts({ posts, onPostClick }) {
   return (
     <div className={styles.PostsFlexContainer}>
       {posts.map((post, index) => {
         return (
-          <div className={styles.FlexItem}>
+          <div
+            key={index}
+            onClick={() => onPostClick(post)}
+            className={styles.FlexItem}
+          >
             <Post
-              key={index}
+              showImage
               autor={post.autor}
               title={post.title}
               tag={post.tags}

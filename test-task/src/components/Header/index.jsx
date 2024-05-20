@@ -1,8 +1,9 @@
 import { useState } from "react";
 
+import { LogoSVG } from "../../assets/svgs/Logo";
+import { SearchSVG } from "../../assets/svgs/search";
+
 import styles from "./index.module.css";
-import { Logo } from "../../assets/svgs/Logo";
-import { Search } from "../../assets/svgs/search";
 
 function Header({ searchValue, setSearchValue }) {
   const [showSearchInput, setShowSearchInput] = useState(false);
@@ -23,12 +24,12 @@ function Header({ searchValue, setSearchValue }) {
   return (
     <div className={styles.LogoAndSearch}>
       <div className={styles.LogoContainer}>
-        <Logo />
+        <LogoSVG />
       </div>
       <div className={styles.Search}>
         {!showSearchInput && (
           <div onClick={handleSearchIconClick} className={styles.SearchButton}>
-            <Search />
+            <SearchSVG />
           </div>
         )}
         {showSearchInput && (

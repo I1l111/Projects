@@ -11,6 +11,7 @@
 }
 
 .FlexItem {
+  cursor: pointer;
   width: calc((100% - 4rem) / 3);
 }
 

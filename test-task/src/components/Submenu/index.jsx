@@ -1,4 +1,4 @@
-import { Arrow } from "../../assets/svgs/Arrow";
+import { ArrowSVG } from "../../assets/svgs/Arrow";
 
 import styles from "./index.module.css";
 
@@ -30,7 +30,7 @@ function Submenu() {
           <div key={item.id} className={styles.SubmenuItem}>
             <span className={styles.Text}>{item.name}</span>
             <div className={styles.ArrowContainer}>
-              <Arrow />
+              <ArrowSVG />
             </div>
           </div>
         );

@@ -1,4 +1,4 @@
-export function Search() {
+export function SearchSVG() {
   return (
     <svg width="100%" height="100%" viewBox="0 0 19 19" fill="none">
       <path
