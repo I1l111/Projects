@@ -1,7 +1,8 @@
 import { useState } from "react";
 
 import { LogoSVG } from "../../assets/svgs/Logo";
-import { SearchSVG } from "../../assets/svgs/search";
+
+import Search from "../Search";
 
 import styles from "./index.module.css";
 
@@ -26,22 +27,13 @@ function Header({ searchValue, setSearchValue }) {
       <div className={styles.LogoContainer}>
         <LogoSVG />
       </div>
-      <div className={styles.Search}>
-        {!showSearchInput && (
-          <div onClick={handleSearchIconClick} className={styles.SearchButton}>
-            <SearchSVG />
-          </div>
-        )}
-        {showSearchInput && (
-          <input
-            name="search"
-            value={searchValue}
-            autoFocus
-            onChange={handleSearchInputChange}
-            onBlur={handleInputBlur}
-          />
-        )}
-      </div>
+      <Search
+        searchValue={searchValue}
+        showInput={showSearchInput}
+        onChangeHandler={handleSearchInputChange}
+        onBlurHandler={handleInputBlur}
+        onIconClickHandler={handleSearchIconClick}
+      />
     </div>
   );
 }

@@ -1,0 +1,22 @@
+.Search {
+  display: flex;
+  justify-content: flex-end;
+  width: calc((100% - 11.3125rem) / 2);
+}
+
+.SearchButton {
+  width: 1rem;
+  height: 1rem;
+  cursor: pointer;
+}
+
+.Search input {
+  border-bottom: 1px solid var(--hover-text-color);
+  border-left: none;
+  border-top: none;
+  border-right: none;
+}
+
+.Search input:focus {
+  outline: none;
+}
