@@ -3,7 +3,7 @@ import { LogoSVG } from "../../assets/svgs/Logo";
 import Search from "../Search";
 import VerticalMenu from "../VerticalMenu";
 
-import styles from "./index.module.css";
+import styles from "./mobile.module.css";
 
 function Header({ searchValue, setSearchValue, onMenuToggle, open }) {
   const menuIconClasses = `${styles.HamburgerIcon} ${open ? styles.Open : ""}`;
@@ -16,12 +16,12 @@ function Header({ searchValue, setSearchValue, onMenuToggle, open }) {
 
   return (
     <>
-      <div className={styles.LogoAndSearch}>
+      <header className={styles.LogoAndSearch}>
         <div className={styles.LogoContainer}>
           <LogoSVG />
         </div>
         <Search searchValue={searchValue} setSearchValue={setSearchValue} />
-      </div>
+      </header>
       {open && <div onClick={onMenuToggle} className={styles.Backdrop} />}
 
       <div className={menuIconContainerClasses}>
@@ -32,9 +32,9 @@ function Header({ searchValue, setSearchValue, onMenuToggle, open }) {
           <span></span>
         </div>
       </div>
-      <div className={menuContainerClasses}>
+      <nav className={menuContainerClasses}>
         <VerticalMenu />
-      </div>
+      </nav>
     </>
   );
 }

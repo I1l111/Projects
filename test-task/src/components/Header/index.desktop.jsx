@@ -5,7 +5,7 @@ import Menu from "../Menu";
 
 import { useScrollPosition } from "../../hooks/useScrollPosition";
 
-import styles from "./index.module.css";
+import styles from "./desktop.module.css";
 
 const STICKY_HEADER_HEIGHT_THRESHOLD = 200;
 
@@ -19,15 +19,15 @@ function Header({ searchValue, setSearchValue }) {
 
   return (
     <>
-      <div className={styles.LogoAndSearch}>
+      <header className={styles.LogoAndSearch}>
         <div className={styles.LogoContainer}>
           <LogoSVG />
         </div>
         <Search searchValue={searchValue} setSearchValue={setSearchValue} />
-      </div>
-      <div style={{ top: `${navbarTop}px` }} className={styles.MenuContainer}>
+      </header>
+      <nav style={{ top: `${navbarTop}px` }} className={styles.MenuContainer}>
         <Menu />
-      </div>
+      </nav>
     </>
   );
 }

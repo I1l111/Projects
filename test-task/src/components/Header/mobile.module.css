@@ -27,16 +27,6 @@
   height: 1.5rem;
 }
 
-.MenuContainer {
-  width: 100%;
-  border-top: 1px solid var(--border-color);
-  border-bottom: 1px solid var(--border-color);
-  background-color: var(--main-background-color);
-  position: sticky;
-  position: -webkit-sticky;
-  top: 0;
-}
-
 .MenuIconContainer {
   position: absolute;
   top: 2rem;

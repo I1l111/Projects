@@ -1,0 +1,36 @@
+.LogoAndSearch {
+  width: 95%;
+  max-width: 72.5rem;
+  height: 5rem;
+  padding: 1.8125rem 0;
+  margin: auto;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.LogoContainer {
+  width: 11.3125rem;
+}
+
+.MenuContainer {
+  width: 100%;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--main-background-color);
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+}
+
+.HamburgerIcon.Open span:nth-child(3) {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.HamburgerIcon.Open span:nth-child(4) {
+  top: 0.5rem;
+  width: 0%;
+  left: 50%;
+}

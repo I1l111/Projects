@@ -16,12 +16,18 @@ import styles from "./index.module.css";
 
 const POSTS_API_URL = "https://cloud.codesupply.co/endpoint/react/data.json";
 
+const SELECTED_POST_INITIAL_STATE = {
+  showModal: false,
+  post: null,
+};
+
 function MainPage() {
   const [searchValue, setSearchValue] = useState("");
   const debouncedSearchValue = useDebounce(searchValue, 500);
 
-  const [selectedPost, setSelectedPost] = useState(null);
-  const [showModal, setShowModal] = useState(false);
+  const [selectedPostState, setSelectedPostState] = useState({
+    ...SELECTED_POST_INITIAL_STATE,
+  });
 
   const { data: posts, loading, error } = useFetch(POSTS_API_URL);
   const filteredPosts = getFilteredPosts({
@@ -36,28 +42,32 @@ function MainPage() {
   }
 
   function handlePostClick(post) {
-    setSelectedPost(post);
-    setShowModal(true);
+    setSelectedPostState({
+      post,
+      showModal: true,
+    });
   }
 
   function handleModalClose() {
-    setShowModal(false);
+    setSelectedPostState({ ...SELECTED_POST_INITIAL_STATE });
   }
 
   const pageContainerClasses =
-    showModal || verticalMenuVisibility ? styles.HideScrollbar : styles.Layout;
+    selectedPostState.showModal || verticalMenuVisibility
+      ? styles.HideScrollbar
+      : styles.Layout;
 
   const showPosts = !error && !loading;
 
   return (
     <>
-      {showModal && (
+      {selectedPostState.showModal && (
         <Modal onClose={handleModalClose}>
-          <Post post={selectedPost} alignHorizontally />
+          <Post post={selectedPostState.post} alignHorizontally />
         </Modal>
       )}
 
-      <div className={pageContainerClasses}>
+      <main className={pageContainerClasses}>
         <Header
           searchValue={searchValue}
           setSearchValue={setSearchValue}
@@ -70,7 +80,7 @@ function MainPage() {
         {error && <Error errorMessage={error.message} />}
 
         {showPosts && <Posts posts={filteredPosts} onClick={handlePostClick} />}
-      </div>
+      </main>
     </>
   );
 }
