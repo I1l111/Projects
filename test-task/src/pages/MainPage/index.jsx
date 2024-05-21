@@ -1,19 +1,14 @@
-import { useState, lazy, Suspense } from "react";
+import { useState } from "react";
 
 import Posts from "../../components/Posts";
 import Post from "../../components/Posts/Post";
 import Loader from "../../components/Loader";
 import Modal from "../../components/Modal";
 import Error from "../../components/Error";
-
-const HeaderLazy = lazy(() => import("../../components/Header/index.desktop"));
-const HeaderMobileLazy = lazy(() =>
-  import("../../components/Header/index.mobile")
-);
+import Header from "../../components/Header";
 
 import { useFetch } from "../../hooks/useFetch";
 import { useDebounce } from "../../hooks/useDebounce";
-import { useScreenSize } from "../../hooks/useScreenSize";
 
 import { getFilteredPosts } from "../../helpers/getFilteredPosts";
 
@@ -34,12 +29,10 @@ function MainPage() {
     posts,
   });
 
-  const [verticalMenuVisibility, setVerticalMenuVisinbility] = useState(false);
-
-  const { mobileSize, tabletSize, desktopSize } = useScreenSize();
+  const [verticalMenuVisibility, setVerticalMenuVisibility] = useState(false);
 
   function handleMenuToggle() {
-    setVerticalMenuVisinbility((prevState) => !prevState);
+    setVerticalMenuVisibility((prevState) => !prevState);
   }
 
   function handlePostClick(post) {
@@ -65,22 +58,12 @@ function MainPage() {
       )}
 
       <div className={pageContainerClasses}>
-        <Suspense fallback="">
-          {desktopSize && (
-            <HeaderLazy
-              searchValue={searchValue}
-              setSearchValue={setSearchValue}
-            />
-          )}
-          {(mobileSize || tabletSize) && (
-            <HeaderMobileLazy
-              onMenuToggle={handleMenuToggle}
-              open={verticalMenuVisibility}
-              searchValue={searchValue}
-              setSearchValue={setSearchValue}
-            />
-          )}
-        </Suspense>
+        <Header
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
+          open={verticalMenuVisibility}
+          onMenuToggle={handleMenuToggle}
+        />
 
         {loading && <Loader />}
 
